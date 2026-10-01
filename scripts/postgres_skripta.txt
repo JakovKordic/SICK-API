@@ -1,0 +1,15 @@
+CREATE SCHEMA IF NOT EXISTS fuel_theft;
+
+CREATE TABLE fuel_theft.vehicle_measurements (
+    id BIGSERIAL PRIMARY KEY,
+    obj_id TEXT NOT NULL,
+    time TIMESTAMP NOT NULL,
+    fuel_lvl DOUBLE PRECISION NOT NULL,
+    speed DOUBLE PRECISION NOT NULL,
+    contact_value INTEGER NOT NULL,
+    gps_latitude DOUBLE PRECISION NOT NULL,
+    gps_longitude DOUBLE PRECISION NOT NULL
+);
+
+CREATE INDEX idx_vehicle_measurements_obj_time
+ON fuel_theft.vehicle_measurements (obj_id, time DESC);
